@@ -13,12 +13,15 @@
     <section id="content">
         <h1>Archives for {{ SITENAME }}</h1>
         <div id="archives">
-            {% for article in dates %}
+          {% for year, date_year in dates|groupby( 'date.year' )|sort(reverse=True) %}
+          <h3><a href="{{SITEURL}}/posts/{{year}}"  class="text">Archive for {{ year }}</a></h3>
+            {% for article in date_year %}
                 <p>
                     <span class="categories-timestamp"><time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time></span>
                     <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}{% if article.subtitle %} - {{ article.subtitle }}{% endif %}</a>
                 </p>
             {% endfor %}
+          {% endfor %}
         </div>
     </section>
 {% endblock %}
