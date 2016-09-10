@@ -11,7 +11,7 @@
 
 {% block content %}
     <section id="content">
-      <h1>{{ _('Archives for') }} {{ SITENAME }}</h1>
+        <h1>{{ _('Archives for') }} {{ SITENAME }}</h1>
         <div id="archives">
             {% for year, date_year in dates|groupby( 'date.year' )|sort(reverse=True) %}
                 <h3>Archive for {{ year }}</h3>
